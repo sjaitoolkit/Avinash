@@ -1,0 +1,1438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<title>For Avani ❤️</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,body{
+    width:100%;
+    min-height:100%;
+}
+
+body{
+    font-family:"DM Sans",sans-serif;
+    background:
+        radial-gradient(circle at top,#3b1725 0%,#170b11 42%,#080507 100%);
+    color:#fff;
+    overflow-x:hidden;
+}
+
+button,input{
+    font-family:inherit;
+}
+
+.page{
+    display:none;
+    width:100%;
+    min-height:100vh;
+    min-height:100svh;
+    overflow-y:auto;
+    overflow-x:hidden;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    padding:28px 18px;
+}
+
+.page.active{
+    display:flex;
+}
+
+.page-inner{
+    width:100%;
+    max-width:620px;
+    margin:auto;
+    text-align:center;
+}
+
+.eyebrow{
+    font-size:12px;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    opacity:.72;
+    margin-bottom:14px;
+}
+
+h1,h2{
+    font-family:"Cormorant Garamond",serif;
+    font-weight:600;
+}
+
+.main-title{
+    font-size:clamp(42px,12vw,70px);
+    line-height:.95;
+    margin-bottom:18px;
+}
+
+.section-title{
+    font-size:clamp(34px,9vw,54px);
+    line-height:1;
+    margin-bottom:12px;
+}
+
+.subtitle{
+    max-width:500px;
+    margin:0 auto 30px;
+    font-size:15px;
+    line-height:1.8;
+    color:rgba(255,255,255,.78);
+}
+
+.glow{
+    position:fixed;
+    width:260px;
+    height:260px;
+    border-radius:50%;
+    background:rgba(255,80,130,.09);
+    filter:blur(60px);
+    pointer-events:none;
+}
+
+.glow.one{
+    top:-100px;
+    left:-100px;
+}
+
+.glow.two{
+    bottom:-120px;
+    right:-100px;
+}
+
+/* BUTTONS */
+
+.primary-btn,
+.secondary-btn{
+    border:none;
+    cursor:pointer;
+    border-radius:999px;
+    padding:14px 25px;
+    font-size:14px;
+    font-weight:600;
+    transition:transform .2s ease,opacity .2s ease;
+    -webkit-tap-highlight-color:transparent;
+}
+
+.primary-btn{
+    color:#fff;
+    background:linear-gradient(135deg,#e95b87,#a72d58);
+    box-shadow:0 12px 30px rgba(190,50,95,.28);
+}
+
+.secondary-btn{
+    color:#fff;
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.15);
+}
+
+.primary-btn:active,
+.secondary-btn:active{
+    transform:scale(.96);
+}
+
+.button-row{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-top:22px;
+}
+
+/* PAGE 1 */
+
+.welcome-card{
+    padding:20px;
+}
+
+.welcome-heart{
+    font-size:38px;
+    margin-bottom:20px;
+    animation:softPulse 2.5s infinite ease-in-out;
+}
+
+@keyframes softPulse{
+    0%,100%{transform:scale(1);}
+    50%{transform:scale(1.08);}
+}
+
+/* PAGE 2 */
+
+.lock-icon{
+    width:74px;
+    height:74px;
+    border-radius:50%;
+    margin:0 auto 22px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:30px;
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.12);
+}
+
+.password-box{
+    width:100%;
+    max-width:370px;
+    margin:0 auto;
+}
+
+.password-input{
+    width:100%;
+    padding:16px 18px;
+    border-radius:14px;
+    border:1px solid rgba(255,255,255,.15);
+    outline:none;
+    background:rgba(255,255,255,.07);
+    color:#fff;
+    font-size:15px;
+    text-align:center;
+}
+
+.password-input::placeholder{
+    color:rgba(255,255,255,.45);
+}
+
+.password-input:focus{
+    border-color:rgba(255,120,160,.65);
+}
+
+.show-password{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    margin:14px 0 18px;
+    font-size:13px;
+    color:rgba(255,255,255,.7);
+}
+
+.show-password input{
+    accent-color:#e95b87;
+}
+
+.error-message{
+    min-height:22px;
+    margin-top:12px;
+    font-size:13px;
+    color:#ff9bb8;
+}
+
+/* PHOTO SLIDESHOW */
+
+.slideshow-wrap{
+    width:100%;
+    max-width:430px;
+    margin:0 auto;
+}
+
+.photo-frame{
+    position:relative;
+    width:100%;
+    aspect-ratio:3 / 4;
+    border-radius:22px;
+    overflow:hidden;
+    background:rgba(255,255,255,.05);
+    border:1px solid rgba(255,255,255,.13);
+    box-shadow:
+        0 20px 60px rgba(0,0,0,.38),
+        0 0 35px rgba(220,60,110,.08);
+}
+
+#slideImage{
+    width:100%;
+    height:100%;
+    display:block;
+    object-fit:cover;
+    object-position:center;
+}
+
+.special-lines{
+    position:absolute;
+    inset:0;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:30px;
+    text-align:center;
+    background:
+        radial-gradient(circle at center,
+        rgba(255,80,130,.16),
+        rgba(10,5,8,.96));
+}
+
+.special-lines.show{
+    display:flex;
+}
+
+.special-lines p{
+    font-family:"Cormorant Garamond",serif;
+    font-size:clamp(25px,7vw,38px);
+    line-height:1.35;
+    font-weight:500;
+}
+
+.photo-caption{
+    min-height:62px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:12px 10px 0;
+    font-family:"Cormorant Garamond",serif;
+    font-size:20px;
+    line-height:1.35;
+    color:rgba(255,255,255,.9);
+}
+
+.slide-status{
+    margin-top:8px;
+    font-size:11px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    color:rgba(255,255,255,.45);
+}
+
+/* VIDEO */
+
+.video-section{
+    width:100%;
+    max-width:620px;
+    margin:0 auto;
+}
+
+.video-frame{
+    width:100%;
+    max-height:70vh;
+    border-radius:20px;
+    overflow:hidden;
+    background:#050405;
+    border:1px solid rgba(255,255,255,.13);
+    box-shadow:0 20px 60px rgba(0,0,0,.4);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+#memoryVideo{
+    display:block;
+    width:100%;
+    max-width:100%;
+    max-height:70vh;
+    object-fit:contain;
+    background:#050405;
+}
+
+.video-caption{
+    min-height:58px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:12px 8px 0;
+    font-family:"Cormorant Garamond",serif;
+    font-size:20px;
+    line-height:1.35;
+}
+
+.video-status{
+    margin-top:6px;
+    font-size:11px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    color:rgba(255,255,255,.45);
+}
+
+/* LETTER */
+
+.letter-card{
+    width:100%;
+    padding:30px 24px;
+    border-radius:24px;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.10),
+            rgba(255,255,255,.045)
+        );
+    border:1px solid rgba(255,255,255,.13);
+    box-shadow:0 25px 70px rgba(0,0,0,.3);
+    text-align:left;
+}
+
+.letter-top{
+    text-align:center;
+    margin-bottom:25px;
+}
+
+.letter-small{
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:3px;
+    color:rgba(255,255,255,.55);
+    margin-bottom:10px;
+}
+
+.letter-title{
+    font-size:clamp(32px,9vw,48px);
+    line-height:1;
+}
+
+.letter-content p{
+    font-family:"Cormorant Garamond",serif;
+    font-size:20px;
+    line-height:1.65;
+    color:rgba(255,255,255,.9);
+    margin-bottom:17px;
+}
+
+.signature{
+    margin-top:28px;
+    text-align:right;
+    font-family:"Cormorant Garamond",serif;
+    font-size:22px;
+    line-height:1.4;
+}
+
+/* FINAL */
+
+.final-photo-wrap{
+    width:100%;
+    max-width:430px;
+    margin:0 auto;
+}
+
+.final-photo{
+    width:100%;
+    aspect-ratio:9 / 16;
+    object-fit:cover;
+    object-position:center;
+    display:block;
+    border-radius:22px;
+    box-shadow:
+        0 25px 70px rgba(0,0,0,.45),
+        0 0 35px rgba(220,60,110,.10);
+    border:1px solid rgba(255,255,255,.13);
+}
+
+.final-message{
+    margin-top:28px;
+}
+
+.final-message h2{
+    font-size:clamp(38px,10vw,58px);
+    line-height:1;
+    margin-bottom:16px;
+}
+
+.final-message p{
+    max-width:500px;
+    margin:0 auto 12px;
+    font-size:15px;
+    line-height:1.8;
+    color:rgba(255,255,255,.78);
+}
+
+.final-love{
+    font-family:"Cormorant Garamond",serif;
+    font-size:26px;
+    margin-top:20px;
+}
+
+.made-by{
+    margin-top:18px;
+    font-size:11px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    color:rgba(255,255,255,.4);
+}
+
+/* MOBILE */
+
+@media(max-width:600px){
+
+    .page{
+        padding:22px 15px;
+        justify-content:center;
+    }
+
+    .page-inner{
+        max-width:100%;
+    }
+
+    .subtitle{
+        font-size:14px;
+        line-height:1.7;
+    }
+
+    .photo-frame{
+        border-radius:18px;
+    }
+
+    .video-frame{
+        border-radius:18px;
+    }
+
+    .letter-card{
+        padding:25px 20px;
+        border-radius:20px;
+    }
+
+    .letter-content p{
+        font-size:18px;
+        line-height:1.6;
+    }
+
+    .final-photo{
+        border-radius:18px;
+    }
+
+    .primary-btn,
+    .secondary-btn{
+        padding:13px 21px;
+    }
+}
+
+@media(max-width:360px){
+
+    .main-title{
+        font-size:39px;
+    }
+
+    .section-title{
+        font-size:32px;
+    }
+
+    .photo-caption,
+    .video-caption{
+        font-size:18px;
+    }
+
+    .letter-content p{
+        font-size:17px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="glow one"></div>
+<div class="glow two"></div>
+
+
+<!-- =========================
+     PAGE 1 — WELCOME
+========================= -->
+
+<section id="page1" class="page active">
+
+    <div class="page-inner welcome-card">
+
+        <div class="welcome-heart">❤️</div>
+
+        <div class="eyebrow">
+            A Little Something For You
+        </div>
+
+        <h1 class="main-title">
+            Made Especially<br>
+            For You, Avani
+        </h1>
+
+        <p class="subtitle">
+            Some moments are too special to be forgotten.
+            So I made a little something to remind you of
+            all the beautiful memories we share.
+        </p>
+
+        <button class="primary-btn" onclick="showPage('page2')">
+            Open Your Surprise ✨
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     PAGE 2 — PASSWORD
+========================= -->
+
+<section id="page2" class="page">
+
+    <div class="page-inner">
+
+        <div class="lock-icon">
+            🔐
+        </div>
+
+        <div class="eyebrow">
+            Just For You
+        </div>
+
+        <h2 class="section-title">
+            A Little Secret
+        </h2>
+
+        <p class="subtitle">
+            This little surprise is just for you.
+            Enter the secret password to continue.
+        </p>
+
+        <div class="password-box">
+
+            <input
+                id="passwordInput"
+                class="password-input"
+                type="password"
+                placeholder="Enter Password"
+                autocomplete="off"
+                onkeydown="handlePasswordKey(event)"
+            >
+
+            <label class="show-password">
+
+                <input
+                    id="showPassword"
+                    type="checkbox"
+                    onchange="togglePassword()"
+                >
+
+                <span>Show Password</span>
+
+            </label>
+
+            <button class="primary-btn" onclick="checkPassword()">
+                Unlock My Gift ❤️
+            </button>
+
+            <div id="passwordError" class="error-message"></div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     PAGE 3 — PHOTO SLIDESHOW
+========================= -->
+
+<section id="page3" class="page">
+
+    <div class="page-inner">
+
+        <div class="eyebrow">
+            Memories
+        </div>
+
+        <h2 class="section-title">
+            Our Beautiful Memories
+        </h2>
+
+        <p class="subtitle">
+            Every picture holds a little piece of our story. ❤️
+        </p>
+
+        <div class="slideshow-wrap">
+
+            <div class="photo-frame">
+
+                <img
+                    id="slideImage"
+                    src="images/photo1.jpg"
+                    alt="Memory"
+                >
+
+                <div id="specialLines" class="special-lines">
+
+                    <p>
+                        “These pictures capture moments,
+                        but they can never capture how much
+                        you mean to me.”
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div id="photoCaption" class="photo-caption">
+                And somehow, this moment became one of my favorites. ❤️
+            </div>
+
+            <div id="photoStatus" class="slide-status">
+                1 / 5
+            </div>
+
+            <div class="button-row">
+
+                <button
+                    class="secondary-btn"
+                    onclick="replaySlideshow()"
+                >
+                    ↻ Replay
+                </button>
+
+                <button
+                    class="primary-btn"
+                    onclick="continueFromPhotos()"
+                >
+                    Continue →
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     PAGE 4 — VIDEO SLIDESHOW
+========================= -->
+
+<section id="page4" class="page">
+
+    <div class="page-inner">
+
+        <div class="eyebrow">
+            Our Moments
+        </div>
+
+        <h2 class="section-title">
+            Little Moments, Big Memories
+        </h2>
+
+        <p class="subtitle">
+            Photos capture moments, but sometimes a few seconds
+            can bring an entire memory back to life. ❤️
+        </p>
+
+        <div class="video-section">
+
+            <div class="video-frame">
+
+                <video
+                    id="memoryVideo"
+                    playsinline
+                    preload="metadata"
+                    controls
+                >
+                    <source
+                        id="videoSource"
+                        src="videos/video1.mp4"
+                        type="video/mp4"
+                    >
+
+                    Your browser does not support video playback.
+
+                </video>
+
+            </div>
+
+            <div id="videoCaption" class="video-caption">
+                Just a little moment I never want to forget.
+            </div>
+
+            <div id="videoStatus" class="video-status">
+                1 / 5
+            </div>
+
+            <div class="button-row">
+
+                <button
+                    class="secondary-btn"
+                    onclick="replayVideoSlideshow()"
+                >
+                    ↻ Replay
+                </button>
+
+                <button
+                    class="primary-btn"
+                    onclick="continueFromVideos()"
+                >
+                    Continue →
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     PAGE 5 — LOVE LETTER
+========================= -->
+
+<section id="page5" class="page">
+
+    <div class="page-inner">
+
+        <div class="letter-card">
+
+            <div class="letter-top">
+
+                <div class="letter-small">
+                    A Letter For You
+                </div>
+
+                <h2 class="letter-title">
+                    To The One Who Means So Much To Me ❤️
+                </h2>
+
+            </div>
+
+            <div class="letter-content">
+
+                <p>
+                    I don't know if words will ever be enough
+                    to explain how much you mean to me, but I
+                    still want to try.
+                </p>
+
+                <p>
+                    Having you in my life has made so many
+                    ordinary moments feel special. Your smile,
+                    your little ways, the conversations we share,
+                    and even the smallest memories with you are
+                    things I never want to forget.
+                </p>
+
+                <p>
+                    You are not just someone I love; you are
+                    someone who has become a beautiful part of
+                    my life. Whenever I'm with you, I feel like
+                    I can simply be myself. And honestly, that's
+                    one of the things I cherish the most about us.
+                </p>
+
+                <p>
+                    We've already created so many beautiful
+                    memories together, and I hope this is only
+                    the beginning. I want to be there for your
+                    happy days, your difficult days, your dreams,
+                    and everything in between.
+                </p>
+
+                <p>
+                    Thank you for choosing me, for understanding
+                    me, for making me smile, and for being you. ❤️
+                </p>
+
+                <p>
+                    No matter how many days pass, I hope we
+                    continue creating memories that we'll look
+                    back on with the same smile.
+                </p>
+
+                <p>
+                    You are, and will always be, one of the most
+                    beautiful parts of my story.
+                </p>
+
+            </div>
+
+            <div class="signature">
+                With all my love,<br>
+                <strong>Avinash ❤️</strong>
+            </div>
+
+            <div class="button-row">
+
+                <button
+                    class="primary-btn"
+                    onclick="showPage('page6')"
+                >
+                    One Last Surprise →
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     PAGE 6 — FINAL
+========================= -->
+
+<section id="page6" class="page">
+
+    <div class="page-inner">
+
+        <div class="eyebrow">
+            And Finally...
+        </div>
+
+        <div class="final-photo-wrap">
+
+            <img
+                class="final-photo"
+                src="images/photo6.jpg"
+                alt="Avinash and Avani"
+            >
+
+        </div>
+
+        <div class="final-message">
+
+            <h2>
+                Forever With You ❤️
+            </h2>
+
+            <p>
+                Every memory with you is something
+                I want to keep forever.
+            </p>
+
+            <p>
+                Thank you for being such a beautiful part
+                of my life. Here's to all the memories we've
+                made, and all the beautiful moments still
+                waiting for us.
+            </p>
+
+            <div class="final-love">
+                I Love You. Always. ❤️
+            </div>
+
+            <div class="made-by">
+                Made With All My Love — Avinash
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<script>
+
+/* =========================
+   PAGE SYSTEM
+========================= */
+
+function showPage(pageId){
+
+    clearPhotoTimer();
+
+    const video = document.getElementById("memoryVideo");
+
+    if(video && pageId !== "page4"){
+        video.pause();
+    }
+
+    document.querySelectorAll(".page").forEach(function(page){
+        page.classList.remove("active");
+    });
+
+    const targetPage = document.getElementById(pageId);
+
+    if(!targetPage){
+        return;
+    }
+
+    targetPage.classList.add("active");
+
+    targetPage.scrollTop = 0;
+
+    window.scrollTo({
+        top:0,
+        left:0,
+        behavior:"instant"
+    });
+
+    if(pageId === "page3"){
+        startSlideshow();
+    }
+
+    if(pageId === "page4"){
+        startVideoSlideshow();
+    }
+}
+
+
+/* =========================
+   PASSWORD
+========================= */
+
+function togglePassword(){
+
+    const input =
+        document.getElementById("passwordInput");
+
+    const checkbox =
+        document.getElementById("showPassword");
+
+    input.type =
+        checkbox.checked ? "text" : "password";
+}
+
+
+function checkPassword(){
+
+    const input =
+        document.getElementById("passwordInput");
+
+    const error =
+        document.getElementById("passwordError");
+
+    const enteredPassword =
+        input.value.trim().toLowerCase();
+
+    /*
+       Password:
+       1/2/2026
+    */
+
+    if(enteredPassword === "1/2/2026"){
+
+        error.textContent = "";
+
+        input.value = "";
+
+        document.getElementById("showPassword").checked = false;
+
+        input.type = "password";
+
+        showPage("page3");
+
+    }else{
+
+        error.textContent =
+            "Hmm... that's not the right password. Try again ❤️";
+    }
+}
+
+
+function handlePasswordKey(event){
+
+    if(event.key === "Enter"){
+        checkPassword();
+    }
+}
+
+
+/* =========================
+   PHOTO SLIDESHOW
+========================= */
+
+const photoSlides = [
+
+    {
+        src:"images/photo1.jpg",
+        caption:"And somehow, this moment became one of my favorites. ❤️"
+    },
+
+    {
+        src:"images/photo2.jpg",
+        caption:"Your smile will always be one of my favorite things."
+    },
+
+    {
+        src:"images/photo3.jpg",
+        caption:"A simple moment, but a beautiful memory."
+    },
+
+    {
+        src:"images/photo4.jpg",
+        caption:"Some memories become special simply because they are with you."
+    },
+
+    {
+        src:"images/photo5.jpg",
+        caption:"If I could keep one thing forever, it would be moments like this. ❤️"
+    }
+
+];
+
+let currentPhotoIndex = 0;
+let photoTimer = null;
+let slideshowRunning = false;
+
+
+function clearPhotoTimer(){
+
+    if(photoTimer !== null){
+
+        clearTimeout(photoTimer);
+
+        photoTimer = null;
+    }
+}
+
+
+function showSlide(index){
+
+    const image =
+        document.getElementById("slideImage");
+
+    const caption =
+        document.getElementById("photoCaption");
+
+    const status =
+        document.getElementById("photoStatus");
+
+    const specialLines =
+        document.getElementById("specialLines");
+
+    specialLines.classList.remove("show");
+
+    image.style.display = "block";
+
+    image.src =
+        photoSlides[index].src;
+
+    caption.textContent =
+        photoSlides[index].caption;
+
+    status.textContent =
+        (index + 1) + " / 5";
+}
+
+
+function startSlideshow(){
+
+    clearPhotoTimer();
+
+    currentPhotoIndex = 0;
+
+    slideshowRunning = true;
+
+    showSlide(0);
+
+    photoTimer = setTimeout(function(){
+
+        nextSlide();
+
+    },2000);
+}
+
+
+function nextSlide(){
+
+    clearPhotoTimer();
+
+    if(!slideshowRunning){
+        return;
+    }
+
+    currentPhotoIndex++;
+
+    if(currentPhotoIndex < photoSlides.length){
+
+        showSlide(currentPhotoIndex);
+
+        photoTimer = setTimeout(function(){
+
+            nextSlide();
+
+        },2000);
+
+    }else{
+
+        finishSlideshow();
+    }
+}
+
+
+function finishSlideshow(){
+
+    clearPhotoTimer();
+
+    slideshowRunning = false;
+
+    const image =
+        document.getElementById("slideImage");
+
+    const caption =
+        document.getElementById("photoCaption");
+
+    const status =
+        document.getElementById("photoStatus");
+
+    const specialLines =
+        document.getElementById("specialLines");
+
+    image.style.display = "none";
+
+    caption.textContent = "";
+
+    status.textContent = "5 / 5";
+
+    specialLines.classList.add("show");
+}
+
+
+function replaySlideshow(){
+
+    clearPhotoTimer();
+
+    slideshowRunning = true;
+
+    currentPhotoIndex = 0;
+
+    showSlide(0);
+
+    photoTimer = setTimeout(function(){
+
+        nextSlide();
+
+    },2000);
+}
+
+
+function continueFromPhotos(){
+
+    clearPhotoTimer();
+
+    slideshowRunning = false;
+
+    showPage("page4");
+}
+
+
+/* =========================
+   VIDEO SLIDESHOW
+========================= */
+
+const videoSlides = [
+
+    {
+        src:"videos/video1.mp4",
+        caption:"Just a little moment I never want to forget."
+    },
+
+    {
+        src:"videos/video2.mp4",
+        caption:"Somehow, moments like this mean everything."
+    },
+
+    {
+        src:"videos/video3.mp4",
+        caption:"Us, being ourselves. ❤️"
+    },
+
+    {
+        src:"videos/video4.mp4",
+        caption:"A tiny memory that still makes me smile."
+    },
+
+    {
+        src:"videos/video5.mp4",
+        caption:"I could watch this moment a thousand times."
+    }
+
+];
+
+let currentVideoIndex = 0;
+let videoPlaying = false;
+
+
+function updateVideoDisplay(){
+
+    const video =
+        document.getElementById("memoryVideo");
+
+    const source =
+        document.getElementById("videoSource");
+
+    const caption =
+        document.getElementById("videoCaption");
+
+    const status =
+        document.getElementById("videoStatus");
+
+    video.pause();
+
+    source.src =
+        videoSlides[currentVideoIndex].src;
+
+    video.load();
+
+    caption.textContent =
+        videoSlides[currentVideoIndex].caption;
+
+    status.textContent =
+        (currentVideoIndex + 1) + " / 5";
+}
+
+
+function startVideoSlideshow(){
+
+    currentVideoIndex = 0;
+
+    videoPlaying = true;
+
+    updateVideoDisplay();
+
+    const video =
+        document.getElementById("memoryVideo");
+
+    video.onended =
+        handleVideoEnded;
+
+    video.play().catch(function(error){
+
+        console.log(
+            "Autoplay was prevented by the browser.",
+            error
+        );
+
+    });
+}
+
+
+function handleVideoEnded(){
+
+    if(!videoPlaying){
+        return;
+    }
+
+    currentVideoIndex++;
+
+    if(currentVideoIndex < videoSlides.length){
+
+        updateVideoDisplay();
+
+        const video =
+            document.getElementById("memoryVideo");
+
+        video.onended =
+            handleVideoEnded;
+
+        video.play().catch(function(error){
+
+            console.log(
+                "Video playback requires user interaction.",
+                error
+            );
+
+        });
+
+    }else{
+
+        finishVideoSlideshow();
+    }
+}
+
+
+function finishVideoSlideshow(){
+
+    videoPlaying = false;
+
+    const video =
+        document.getElementById("memoryVideo");
+
+    video.pause();
+
+    document.getElementById("videoStatus").textContent =
+        "5 / 5";
+}
+
+
+function replayVideoSlideshow(){
+
+    const video =
+        document.getElementById("memoryVideo");
+
+    videoPlaying = true;
+
+    currentVideoIndex = 0;
+
+    updateVideoDisplay();
+
+    video.onended =
+        handleVideoEnded;
+
+    video.play().catch(function(error){
+
+        console.log(
+            "Video playback requires user interaction.",
+            error
+        );
+
+    });
+}
+
+
+function continueFromVideos(){
+
+    const video =
+        document.getElementById("memoryVideo");
+
+    videoPlaying = false;
+
+    video.pause();
+
+    showPage("page5");
+}
+
+
+/* =========================
+   VISIBILITY
+========================= */
+
+document.addEventListener(
+    "visibilitychange",
+    function(){
+
+        if(document.hidden){
+
+            const video =
+                document.getElementById("memoryVideo");
+
+            if(video){
+                video.pause();
+            }
+        }
+    }
+);
+
+
+/* =========================
+   INITIAL STATE
+========================= */
+
+window.addEventListener(
+    "load",
+    function(){
+
+        clearPhotoTimer();
+
+        const specialLines =
+            document.getElementById("specialLines");
+
+        specialLines.classList.remove("show");
+
+        const image =
+            document.getElementById("slideImage");
+
+        image.style.display = "block";
+    }
+);
+
+</script>
+
+</body>
+</html>
